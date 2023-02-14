@@ -10,9 +10,9 @@
 <body>
 
   <!-- table -->
-  <table width="100%" style="height:650px">
+  <table border="1" width="100%" style="min-height: 100vh">
       <tr style="background-color: #93BFCF;">
-        <td>
+        <td colspan="5">
           <center>
             HEADER    
           </center>
@@ -20,24 +20,51 @@
       </tr>
 
       <tr height="30px" style="background-color: #BDCDD6;">
-        <td>
-          <a href="/home">HOME</a>
-          <a href="/info">INFO</a>
-          <a href="/mahasiswa">MAHASISWA</a>
-        <a href="/logout">LOGOUT</a>
+        <td width="100px">
+          <center>
+            <a href="/home">HOME</a>          
+          </center>
         </td>
+
+        <td width="100px">
+          <center>
+            <a href="/info">INFO</a>
+          </center>
+        </td>
+
+        <td width="150px">
+          <center>
+            <a href="/mahasiswa">MAHASISWA</a>
+          </center>
+        </td>
+
+        <td>
+
+        </td>
+
+        <?php
+            if(session()->get('username'))
+            { ?>
+              <td width="100px">
+                <center>
+                  <a href="/logout">LOGOUT</a>
+                </center>
+              </td>
+          <?php
+            }
+          ?>
       </tr>
 
-      <tr>
-        <td>
+      <tr height="75%">
+        <td colspan="5">
           <center>
             <?= $this->renderSection('content') ?>
           </center>
         </td>
       </tr>
 
-      <tr style="background-color: #DDDDDD;">
-        <td>
+      <tr style="background-color: #DDDDDD;" height="10%">
+        <td colspan="5">
           <center>
             CREATED BY WILDAN SETYA NUGRAHA    
           </center>  

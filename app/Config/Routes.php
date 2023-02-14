@@ -34,22 +34,18 @@ $routes->post('/', 'c_Autentikasi::login');
 $routes->get('/logout', 'c_Autentikasi::logout');
 
 $routes->get('/home', 'c_Home::index', ['filter' => 'auth']);
-
 $routes->get('/info', 'c_Info::index', ['filter' => 'auth']);
 
-$routes->get('/mahasiswa', 'c_Mahasiswa::display', ['filter' => 'auth']);
-
-$routes->get('/mahasiswa/add', 'c_Mahasiswa::inputMahasiswa', ['filter' => 'auth']);
-$routes->post('/mahasiswa/add', 'c_Mahasiswa::addMahasiswa');
-
-$routes->get('/mahasiswa/detail/(:num)', 'c_Mahasiswa::detailMahasiswa/$1', ['filter' => 'auth']);
-
-$routes->get('/mahasiswa/delete/(:num)', 'c_Mahasiswa::deleteMahasiswa/$1', ['filter' => 'auth']);
-
-$routes->post('/mahasiswa/edit', 'c_Mahasiswa::editMahasiswa');
-
-$routes->post('/mahasiswa/search', 'c_Mahasiswa::searchMahasiswa', ['filter' => 'auth']);
-
+$routes->group('/', ['filter' => 'auth'], function($routes)
+{
+    $routes->get('/mahasiswa', 'c_Mahasiswa::display');
+    $routes->get('/mahasiswa/add', 'c_Mahasiswa::inputMahasiswa');
+    $routes->post('/mahasiswa/add', 'c_Mahasiswa::addMahasiswa');
+    $routes->get('/mahasiswa/detail/(:num)', 'c_Mahasiswa::detailMahasiswa/$1');
+    $routes->get('/mahasiswa/delete/(:num)', 'c_Mahasiswa::deleteMahasiswa/$1');
+    $routes->post('/mahasiswa/edit', 'c_Mahasiswa::editMahasiswa');
+    $routes->post('/mahasiswa/search', 'c_Mahasiswa::searchMahasiswa');
+});
 
 
 /*

@@ -12,9 +12,19 @@ class m_Admin extends Model
 
   public function cekLogin($username, $password)
   {
-    $query = "SELECT * FROM admin WHERE username = '".$username."' AND password = '".$password."'";
-    $data = $this->db->query($query);
-  
-    return $data->getRowArray();
+    
+    $query = "SELECT * FROM admin WHERE username = '".$username."'";
+    $data = $this->db->query($query)->getRowArray();
+
+    if($data)
+    {
+      $hash = $data['password'];
+      if(password_verify($password, $hash))
+      {
+        return $data;
+      } 
+    }
+    return null;
+
   }
 }

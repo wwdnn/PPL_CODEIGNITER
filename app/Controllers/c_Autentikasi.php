@@ -24,6 +24,7 @@ class c_Autentikasi extends BaseController
     {
       session()->set('username', $cek['username']);
       session()->set('login', TRUE);
+      
 
       return redirect()->to(base_url('home'));
     }

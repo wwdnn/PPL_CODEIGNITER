@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-</head>
-<body>
-    <table width="100%" height="500vh">
+<?= $this->extend('v_Template') ?>
+<?= $this->section('content') ?>
+
+    <table>
       <tr>
         <td>
           <center>
@@ -21,6 +15,7 @@
             ?>
             <h1>LOGIN</h1>
             <form action="/" method="post">
+              <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
               <table>
                 <tr> 
                   <td>Username</td>
@@ -43,5 +38,4 @@
         </td>
       </tr>
     </table>
-</body>
-</html>
+<?= $this->endSection() ?>
