@@ -14,7 +14,7 @@
   ?>
 
   <!-- Search Mahasiswa -->
-  <div class="search-mahasiswa" style="padding-bottom:10px">
+  <div class="search-mahasiswa" style="padding-bottom:10px; padding-top:20px">
     <form action="/mahasiswa/search" method="post">
       <input type="text" name="keyword" placeholder="Search Mahasiswa">
       <button type="submit">Search</button>

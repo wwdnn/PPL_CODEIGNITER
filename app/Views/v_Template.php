@@ -38,8 +38,10 @@
           </center>
         </td>
 
-        <td>
-
+        <td width="150px">
+          <center>
+            <a href="/pegawai/input">PEGAWAI</a>
+          </center>
         </td>
 
         <?php
