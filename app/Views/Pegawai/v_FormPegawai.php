@@ -9,20 +9,21 @@
   <?php } ?>
 
   <!-- validate input -->
-  <?php if ((session()->getFlashdata('errors'))) {?>
-      <div>
-         <!-- only nim -->
-         <?= $error = session()->getFlashdata('errors')?>
-  <?php } ?>
-
+  <div class="container-error" style="width:300px;">
+    <?php if ((session()->getFlashdata('errors'))) {?>
+      <div style="background-color:red; color:white">
+        <!-- only nim -->
+        <?= $error = session()->getFlashdata('errors')?>
+    <?php } ?>
+  </div>
+        
 
   <table>
     <form action="/pegawai/input" method="post">  
-      <?= csrf_field(); ?>
       <tr>
         <td>NIM</td>
         <td>:</td>
-        <td><input type="text" name="nim" id="nim"></td>
+        <td><input type="text" name="nim" id="nim" value="<?= set_value('nim') ?>"/></td>
       </tr>
 
       <tr>
@@ -35,7 +36,7 @@
         <td>Jenis Kelamin</td>
         <td>:</td>
         <td>
-          <input type="radio" name="jk" id="jk" value="Pria">Pria
+          <input type="radio" name="jk" id="jk" value="Pria" <?= set_radio('jk', 'Pria') ?> />Pria
           <input type="radio" name="jk" id="jk" value="Wanita">Wanita
         </td>
       </tr>
