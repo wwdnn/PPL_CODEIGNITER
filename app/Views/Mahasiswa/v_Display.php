@@ -28,7 +28,7 @@
     </form>
   </div>
 
-  <table border="1">
+  <table border="1" class=" table-bordered">
     <tr>
       <th>NIM</th>
       <th>Nama</th>
@@ -38,12 +38,12 @@
     </tr>
     <?php foreach ($mahasiswa as $mhs) { ?>
       <tr>
-        <td><?= $mhs['NIM'] ?></td>
-        <td><?= $mhs['Nama'] ?></td>
-        <td><?= $mhs['Umur'] ?></td>
+        <td><?= $mhs->NIM ?></td>
+        <td><?= $mhs->Nama ?></td>
+        <td><?= $mhs->Umur ?></td>
         <td>
-          <a href="/mahasiswa/detail/<?= $mhs['NIM'] ?>">Detail</a>
-          <a href="/mahasiswa/delete/<?= $mhs['NIM'] ?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">Delete</a>
+          <a href="/mahasiswa/detail/<?= $mhs->NIM ?>">Detail</a>
+          <a href="/mahasiswa/delete/<?= $mhs->NIM ?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">Delete</a>
         </td>
       </tr>
     <?php } ?>
@@ -55,6 +55,12 @@
 
   </table>
 
+  <div class="pagination justify-content-center p-4">
+    <?= $pager->links('mahasiswa', 'bootstrap_pagination'); ?>
+  </div>
+       
+
+ 
 <?= $this->endSection() ?>
 
 <script>

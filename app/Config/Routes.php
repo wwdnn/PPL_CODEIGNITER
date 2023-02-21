@@ -47,8 +47,10 @@ $routes->group('/', ['filter' => 'auth'], function($routes)
     $routes->post('/mahasiswa/search', 'c_Mahasiswa::searchMahasiswa');
 });
 
-$routes->get('/pegawai/input', 'c_Pegawai::inputPegawai');
-$routes->post('/pegawai/input', 'c_Pegawai::tambahPegawai');
+$routes->group('/', ['filter' => 'auth'], function($routes){
+    $routes->get('/pegawai/input', 'c_Pegawai::inputPegawai');
+    $routes->post('/pegawai/input', 'c_Pegawai::tambahPegawai');
+});
 
 /*
  * --------------------------------------------------------------------

@@ -8,19 +8,21 @@
   { 
       protected $table = 'mahasiswa';
       protected $primaryKey = 'NIM';
+      protected $returnType = 'object';
       protected $allowedFields = ['NIM', 'Nama', 'Umur'];
       protected $db;
 
       public function __construct()
       {
+        parent::__construct();
         $this->db = \Config\Database::connect();
       }
 
       public function getAllData()
       {
-        $query = "SELECT * FROM mahasiswa";
-        $data = $this->db->query($query);
-        return $data->getResultArray(); 
+        $builder = $this->db->table('mahasiswa');
+        $query = $builder->get();
+        return $query->getResult();
       }
 
       public function getMahasiswa($nim)

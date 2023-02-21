@@ -2,15 +2,21 @@
 
 namespace App\Controllers;
 use App\Models\M_Mahasiswa as M_Mahasiswa;
+use CodeIgniter\HTTP\Request;
 
 class c_Mahasiswa extends BaseController
 {
     public function display()
     {
-        $model = new M_Mahasiswa;
-        $mahasiswa= $model->getAllData();
+            $model = new M_Mahasiswa;
+            $mahasiswa = $model->paginate(10);
 
-        return view('Mahasiswa/v_Display', compact('mahasiswa'));
+            $data = [
+                'mahasiswa' => $model->paginate(10, 'mahasiswa'),
+                'pager' => $model->pager,
+            ];
+
+            return view('Mahasiswa/v_Display', $data);
     }
 
     public function inputMahasiswa()
